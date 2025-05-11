@@ -12,5 +12,5 @@ script = ExtResource("1_ggl66")
 offset_right = 40.0
 offset_bottom = 40.0
 texture_under = ExtResource("2_ao835")
-texture_over = ExtResource("3_26df7")
+texture_progress = ExtResource("3_26df7")
 script = ExtResource("4_quw0j")

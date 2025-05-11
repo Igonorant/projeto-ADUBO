@@ -48,6 +48,8 @@ public partial class HealthComponent : Node2D
     
     private void ReceiveDamage(int dmg)
     {
+                GD.Print("DAMAGE: " + dmg);
+    
         tempHealth -= dmg;
         
         if(tempHealth <= 0)
@@ -57,7 +59,7 @@ public partial class HealthComponent : Node2D
         }
         else
         {
-           EmitSignal(nameof(HealthChangedEventHandler), -dmg);         
+           EmitSignal(nameof(HealthChanged), dmg);         
         }
         
         if(tempHealth < maxHealth)
@@ -72,6 +74,8 @@ public partial class HealthComponent : Node2D
     
     private void Heal(int heal)
     {
+                    GD.Print("HEAL: " + heal);
+    
         tempHealth += heal;
         
         if(tempHealth >= maxHealth)
@@ -83,17 +87,17 @@ public partial class HealthComponent : Node2D
         
         
           
-        EmitSignal(nameof(HealthChangedEventHandler), heal);
+        EmitSignal(nameof(HealthChanged), heal);
     }
     
     private void Die()
     {
-        EmitSignal(nameof(HealthDepletedEventHandler));
+        EmitSignal(nameof(HealthDepleted));
     }
     
     private void ToggleLifeBar(bool show)
     {
-        EmitSignal(nameof(ToggleBarEventHandler), show);
+        EmitSignal(nameof(ToggleBar), show);
         
     }
 

@@ -23,7 +23,11 @@ int maxLife;
     
     private void UpdateValueUponChange(int valueChange)
     {
+                    GD.Print("Life value update reached for valueChange: " + valueChange);
+    
         tempLife += valueChange;
+        
+                                    GD.Print("Temp life is" + Value);
         
         if(tempLife > maxLife)
         {
@@ -37,6 +41,8 @@ int maxLife;
         }
         
         Value = tempLife;
+        
+                            GD.Print("Value is" + Value);
         
     }
     

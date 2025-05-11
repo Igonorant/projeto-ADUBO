@@ -37,52 +37,52 @@ size = Vector2(128, 127)
 
 [node name="Game" type="Node"]
 
-[node name="Home" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="."]
 
-[node name="Borders" type="Area2D" parent="Home"]
+[node name="Borders" type="Area2D" parent="World"]
 
-[node name="Border1" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border1" type="CollisionShape2D" parent="World/Borders"]
 shape = SubResource("WorldBoundaryShape2D_fc0e3")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Border2" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border2" type="CollisionShape2D" parent="World/Borders"]
 shape = SubResource("WorldBoundaryShape2D_7jktm")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Border3" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border3" type="CollisionShape2D" parent="World/Borders"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_ryrav")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Border4" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border4" type="CollisionShape2D" parent="World/Borders"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_eow3j")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="TextureRect" type="TextureRect" parent="Home"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Background" type="TextureRect" parent="World"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_7jktm")
 
-[node name="Walls" type="Area2D" parent="Home"]
+[node name="HomeWalls" type="Area2D" parent="World"]
 
-[node name="Left" type="CollisionShape2D" parent="Home/Walls"]
+[node name="Left" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(653, 397)
 shape = SubResource("RectangleShape2D_7jktm")
 
-[node name="Right" type="CollisionShape2D" parent="Home/Walls"]
+[node name="Right" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(1169, 396.5)
 shape = SubResource("RectangleShape2D_ryrav")
 
-[node name="Top" type="CollisionShape2D" parent="Home/Walls"]
+[node name="Top" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(911, 261)
 shape = SubResource("RectangleShape2D_eow3j")
 
-[node name="BottomLeft" type="CollisionShape2D" parent="Home/Walls"]
+[node name="BottomLeft" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(767.5, 533)
 shape = SubResource("RectangleShape2D_vef74")
 
-[node name="BottomRight" type="CollisionShape2D" parent="Home/Walls"]
+[node name="BottomRight" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(1056.75, 530)
 shape = SubResource("RectangleShape2D_hve3p")
 
@@ -113,7 +113,7 @@ drag_bottom_margin = 0.1
 
 [node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(245, 873)
-rotation = 3.14159
+rotation = -3.14159
 scale = Vector2(0.35, 0.35)
 script = ExtResource("3_feb5d")
 target = NodePath("../Player")

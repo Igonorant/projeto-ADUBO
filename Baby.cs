@@ -27,7 +27,7 @@ public partial class Baby : CharacterBody2D
         if (distance_to_mommy.LengthSquared() > maxDistanceToMommySquared)
         {
             currentDirection = Vector2.Zero;
-            Velocity = distance_to_mommy.Normalized() * babySpeed * (float)delta;
+            Velocity = distance_to_mommy.Normalized() * babySpeed;
         }
         else
         {
@@ -37,7 +37,7 @@ public partial class Baby : CharacterBody2D
                 currentDirection.Y = rng.RandfRange(-1.0f, 1.0f);
                 currentDirection = currentDirection.Normalized();
             }
-            Velocity = currentDirection * babySpeed * (float)delta;
+            Velocity = currentDirection * babySpeed;
         }
         MoveAndSlide();
     }

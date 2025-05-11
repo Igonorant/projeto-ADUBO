@@ -3,7 +3,7 @@ using System;
 
 
 
-public partial class Zombie : CharacterBody2D
+public partial class Zombie : Character
 {
     [Export] public CharacterBody2D target;
     [Export] public float speed = 50.0f;

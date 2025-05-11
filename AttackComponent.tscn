@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://wa1fa6ev8mxx"]
+
+[ext_resource type="Script" uid="uid://buikvkxam6hf3" path="res://AttackComponent.cs" id="1_ymle2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0p7r"]
+radius = 8.0
+height = 20.0
+
+[node name="AttackComponent" type="Node"]
+script = ExtResource("1_ymle2")
+
+[node name="ShortRangeHit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShortRangeHit"]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_p0p7r")

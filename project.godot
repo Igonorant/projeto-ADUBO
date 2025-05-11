@@ -48,6 +48,14 @@ right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Friedly"
+2d_physics/layer_3="Unfriendly"
+2d_physics/layer_4="FriendlyAttack"
+2d_physics/layer_5="UnfriendlyAttack"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

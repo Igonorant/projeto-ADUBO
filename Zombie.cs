@@ -47,6 +47,7 @@ public partial class Zombie : Character
         {
             debugLabel = debugLabelScene.Instantiate<Label>();
             AddChild(debugLabel);
+            debugLabel.Scale = new Vector2(1.0f / Scale.X, 1.0f / Scale.Y);
         }
     }
 
@@ -54,7 +55,7 @@ public partial class Zombie : Character
     public override void _PhysicsProcess(double delta)
     {
         ComputeNextState();
-        if (debugLabel != null) { debugLabel.Text = GetStateString(currentState); }
+        if (debugLabel != null) { debugLabel.Text = GetStateString(currentState) + "\n" + target.Name; }
 
         switch (currentState)
         {

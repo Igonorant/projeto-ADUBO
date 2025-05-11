@@ -100,9 +100,13 @@ drag_bottom_margin = 0.1
 
 [node name="Zombie" parent="." node_paths=PackedStringArray("mommy", "baby") instance=ExtResource("3_r0x5m")]
 position = Vector2(245, 873)
+enableDebug = true
 mommy = NodePath("../Player")
 baby = NodePath("../Baby")
 
 [node name="Baby" parent="." node_paths=PackedStringArray("mommy") instance=ExtResource("4_3mrqo")]
 position = Vector2(1112, 337)
+enableDebug = true
 mommy = NodePath("../Player")
+maxDistanceToMommy = 75.0
+idleTime = 3.0

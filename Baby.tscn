@@ -9,6 +9,7 @@ size = Vector2(128, 127)
 [node name="Baby" type="CharacterBody2D"]
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
+motion_mode = 1
 script = ExtResource("1_gvlnj")
 maxDistanceToMommy = 150.0
 metadata/_edit_group_ = true

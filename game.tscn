@@ -35,7 +35,7 @@ size = Vector2(204.5, 20)
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Borders" type="Area2D" parent="World"]
+[node name="Borders" type="StaticBody2D" parent="World"]
 
 [node name="Border1" type="CollisionShape2D" parent="World/Borders"]
 shape = SubResource("WorldBoundaryShape2D_fc0e3")
@@ -61,7 +61,7 @@ offset_bottom = 1080.0
 texture = ExtResource("1_sb48q")
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeWalls" type="Area2D" parent="World"]
+[node name="HomeWalls" type="StaticBody2D" parent="World"]
 
 [node name="Left" type="CollisionShape2D" parent="World/HomeWalls"]
 position = Vector2(653, 397)

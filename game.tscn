@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b63q0g84lqunx"]
+[gd_scene load_steps=16 format=3 uid="uid://b63q0g84lqunx"]
 
+[ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_7jktm"]
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="4_fc0e3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -15,11 +17,23 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eow3j"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jktm"]
+size = Vector2(20, 292)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(20, 289)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
+size = Vector2(496, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
+size = Vector2(209, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
+size = Vector2(204.5, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fc0e3"]
-blend_mode = 1
 
 [node name="Game" type="Node"]
 
@@ -27,26 +41,54 @@ blend_mode = 1
 
 [node name="Borders" type="Area2D" parent="Home"]
 
-[node name="Wall1" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border1" type="CollisionShape2D" parent="Home/Borders"]
 shape = SubResource("WorldBoundaryShape2D_fc0e3")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Wall2" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border2" type="CollisionShape2D" parent="Home/Borders"]
 shape = SubResource("WorldBoundaryShape2D_7jktm")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Wall3" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border3" type="CollisionShape2D" parent="Home/Borders"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_ryrav")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
-[node name="Wall4" type="CollisionShape2D" parent="Home/Borders"]
+[node name="Border4" type="CollisionShape2D" parent="Home/Borders"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_eow3j")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
+[node name="TextureRect" type="TextureRect" parent="Home"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_7jktm")
+
+[node name="Walls" type="Area2D" parent="Home"]
+
+[node name="Left" type="CollisionShape2D" parent="Home/Walls"]
+position = Vector2(653, 397)
+shape = SubResource("RectangleShape2D_7jktm")
+
+[node name="Right" type="CollisionShape2D" parent="Home/Walls"]
+position = Vector2(1169, 396.5)
+shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="Top" type="CollisionShape2D" parent="Home/Walls"]
+position = Vector2(911, 261)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="BottomLeft" type="CollisionShape2D" parent="Home/Walls"]
+position = Vector2(767.5, 533)
+shape = SubResource("RectangleShape2D_vef74")
+
+[node name="BottomRight" type="CollisionShape2D" parent="Home/Walls"]
+position = Vector2(1056.75, 530)
+shape = SubResource("RectangleShape2D_hve3p")
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(386, 197)
+position = Vector2(889, 397)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_e2o6t")
 metadata/_edit_group_ = true
 
@@ -57,16 +99,45 @@ texture = ExtResource("2_feb5d")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
 [node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(616, 777)
+position = Vector2(245, 873)
+rotation = 3.14159
+scale = Vector2(0.35, 0.35)
 script = ExtResource("3_feb5d")
 target = NodePath("../Player")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Zombie"]
-material = SubResource("CanvasItemMaterial_fc0e3")
 texture = ExtResource("2_feb5d")
 
 [node name="HitBox" type="CollisionShape2D" parent="Zombie"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j5wjh")
+
+[node name="Baby" type="CharacterBody2D" parent="." node_paths=PackedStringArray("mommy")]
+position = Vector2(1112, 337)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+script = ExtResource("4_fc0e3")
+mommy = NodePath("../Player")
+maxDistanceToMommy = 150.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Baby"]
+texture = ExtResource("2_feb5d")
+
+[node name="HitBox" type="CollisionShape2D" parent="Baby"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")

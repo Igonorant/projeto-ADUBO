@@ -6,11 +6,11 @@ using System;
 public partial class Zombie : CharacterBody2D
 {
     [Export] public CharacterBody2D target;
+    [Export] public float speed = 50.0f;
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 direction = new Vector2(0.0f, 0.0f);
-        direction = target.GlobalPosition - GlobalPosition;
-        MoveAndCollide(direction.Normalized() * 150 * (float)delta);
+        Vector2 direction = target.GlobalPosition - GlobalPosition;
+        MoveAndCollide(direction.Normalized() * speed * (float)delta);
     }
 }

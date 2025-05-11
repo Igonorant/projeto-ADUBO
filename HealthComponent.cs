@@ -34,15 +34,15 @@ public partial class HealthComponent : Node2D
         
     }
     
-    private void HurtboxEvent(int effect)
+    private void HurtboxEvent(EffectPackage effect)
     {
-        if (effect>0)
+        if (effect.damage>0)
         {
-            Heal(effect);
+            Heal(effect.damage);
         }
-        else if(effect<0)
+        else if(effect.damage<0)
         {
-            ReceiveDamage(effect);
+            ReceiveDamage(effect.damage);
         }
     }
     

@@ -11,6 +11,11 @@ public enum AttackType
 public partial class AttackComponent : Node2D
 {
     [Export] private int attackPower;
+    
+    [Export] private float stunTime;
+    
+    [Export] private float knockback;
+    
     [Export] private AttackType attackType;
 
     [Export] private float attackDuration;
@@ -60,7 +65,18 @@ public partial class AttackComponent : Node2D
     
         Hurtbox hurtbox = (Hurtbox)body;
         
-        hurtbox.IsHitByLifeAlteringEffect(-attackPower);
+        EffectPackage package = new EffectPackage();
+        
+        package.damage = -attackPower;
+        
+        package.stunTime = stunTime;
+        
+        package.knockback = knockback;
+        
+        hurtbox.IsHitByLifeAlteringEffect(package);
+        
+        shortRangeShape.Disabled = true;
+
     }
 
 }

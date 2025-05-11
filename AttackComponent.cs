@@ -20,7 +20,7 @@ public partial class AttackComponent : Node2D
     [Export] private Timer timer;
 
     
-    private void _Ready()
+    public override void _Ready()
     {
         GetParent<Character>().Connect(Character.SignalName.Attacking, new Callable(this, nameof(Attack)));
 

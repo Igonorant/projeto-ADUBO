@@ -99,8 +99,10 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
-[node name="Zombie" parent="." instance=ExtResource("3_r0x5m")]
+[node name="Zombie" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r0x5m")]
 position = Vector2(245, 873)
+target = NodePath("../Player")
 
-[node name="Baby" parent="." instance=ExtResource("4_3mrqo")]
+[node name="Baby" parent="." node_paths=PackedStringArray("mommy") instance=ExtResource("4_3mrqo")]
 position = Vector2(1112, 337)
+mommy = NodePath("../Player")

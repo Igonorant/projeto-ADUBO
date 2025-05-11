@@ -6,12 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
 
-[node name="Baby" type="CharacterBody2D" node_paths=PackedStringArray("mommy")]
+[node name="Baby" type="CharacterBody2D"]
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
-motion_mode = 1
 script = ExtResource("1_gvlnj")
-mommy = NodePath("")
 maxDistanceToMommy = 150.0
 metadata/_edit_group_ = true
 

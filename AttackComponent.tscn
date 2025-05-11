@@ -1,22 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://wa1fa6ev8mxx"]
+[gd_scene load_steps=4 format=3 uid="uid://wa1fa6ev8mxx"]
 
 [ext_resource type="Script" uid="uid://buikvkxam6hf3" path="res://AttackComponent.cs" id="1_ymle2"]
+[ext_resource type="Script" uid="uid://d0b1knavpwc2m" path="res://ShortRangeHit.cs" id="2_p0p7r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0p7r"]
-radius = 8.0
-height = 20.0
+radius = 133.0
+height = 342.0
 
-[node name="AttackComponent" type="Node2D" node_paths=PackedStringArray("shortRangeArea", "timer")]
+[node name="AttackComponent" type="Node2D" node_paths=PackedStringArray("shortRangeShape", "timer")]
 script = ExtResource("1_ymle2")
-shortRangeArea = NodePath("ShortRangeHit/CollisionShape2D")
+shortRangeShape = NodePath("ShortRangeHit/CollisionShape2D")
 timer = NodePath("Timer")
 
 [node name="ShortRangeHit" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 4
+script = ExtResource("2_p0p7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShortRangeHit"]
-position = Vector2(0, 11)
+position = Vector2(2, 256)
 shape = SubResource("CapsuleShape2D_p0p7r")
+disabled = true
+debug_color = Color(0.529879, 0.571186, 0, 0.42)
 
 [node name="Timer" type="Timer" parent="."]

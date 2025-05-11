@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://dpib05j0j80en" path="res://BrainComponent.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
-[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="5_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="5_cxr5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
@@ -35,12 +35,13 @@ maxHealth = 100
 hurtbox = NodePath("../Hurtbox")
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_cxr5p")]
-scale = Vector2(1, 1)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_tdg3f")
+disabled = true
 debug_color = Color(0.975015, 0, 0.422536, 0.42)
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_cxr5p")]
 attackPower = 10
-attackDuration = 1.0
+attackDuration = 0.3

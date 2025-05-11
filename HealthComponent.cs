@@ -28,7 +28,7 @@ public partial class HealthComponent : Node2D
     {
         tempHealth = maxHealth;
         
-        EmitSignal(nameof(HealthSetEventHandler), tempHealth);
+        EmitSignal(nameof(HealthSet), tempHealth);
         
         hurtbox.Connect(Hurtbox.SignalName.HurtboxHit, new Callable(this, nameof(HurtboxEvent)));
         

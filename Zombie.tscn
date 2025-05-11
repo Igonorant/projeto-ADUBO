@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdh3jnpvq162o"]
+[gd_scene load_steps=7 format=3 uid="uid://bdh3jnpvq162o"]
 
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="1_g6hu2"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_vrb4v"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="3_ykpkj"]
+[ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="4_dtdss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qybkj"]
+radius = 84.949
 
 [node name="Zombie" type="CharacterBody2D"]
 scale = Vector2(0.35, 0.35)
@@ -19,3 +24,14 @@ texture = ExtResource("2_vrb4v")
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_ykpkj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_qybkj")
+debug_color = Color(0.972809, 0, 0.438442, 0.42)
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("4_dtdss")]
+visibleBar = true
+maxHealth = 100
+hurtbox = NodePath("../Hurtbox")

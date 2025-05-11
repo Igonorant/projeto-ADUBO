@@ -15,7 +15,7 @@ public partial class AttackComponent : Node2D
 
     [Export] private float attackDuration;
 
-    [Export] private CollisionShape2D shortRangeArea;
+    [Export] private CollisionShape2D shortRangeShape;
 
     [Export] private Timer timer;
 
@@ -39,7 +39,7 @@ public partial class AttackComponent : Node2D
 
                 timer.Start();
 
-                shortRangeArea.Disabled = false;
+                shortRangeShape.Disabled = false;
 
                 break;
         }
@@ -49,7 +49,18 @@ public partial class AttackComponent : Node2D
     private void OnTimerTimeOut()
     {
         GD.Print("ATAQUEI!");
-        shortRangeArea.Disabled = true;
+        shortRangeShape.Disabled = true;
+        
+        timer.Stop();
+    }
+
+    public void OnBodyEntered(Node2D body)
+    {
+        GD.Print("ACERTEI!");
+    
+        Hurtbox hurtbox = (Hurtbox)body;
+        
+        hurtbox.IsHitByLifeAlteringEffect(-attackPower);
     }
 
 }

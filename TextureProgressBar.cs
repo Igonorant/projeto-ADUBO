@@ -18,7 +18,7 @@ int maxLife;
     
         healthComponent.Connect(HealthComponent.SignalName.HealthSet, new Callable(this, nameof(SetHealthValue)));
         healthComponent.Connect(HealthComponent.SignalName.HealthChanged, new Callable(this, nameof(UpdateValueUponChange)));
-        
+        healthComponent.Connect(HealthComponent.SignalName.ToggleBar, new Callable(this, nameof(ToggleBar)));
     }
     
     private void UpdateValueUponChange(int valueChange)
@@ -28,7 +28,9 @@ int maxLife;
         if(tempLife > maxLife)
         {
             tempLife = maxLife;
+            
         }
+    
         if(tempLife < 0)
         {
             tempLife = 0;
@@ -45,6 +47,11 @@ int maxLife;
         
         MaxValue = maxLife;
         Value = tempLife;
+    }
+    
+    private void ToggleBar(bool tog)
+    {
+        Visible = tog;
     }
 
 }

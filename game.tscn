@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b63q0g84lqunx"]
 
-[ext_resource type="Script" uid="uid://ckmbdt5kgec24" path="res://character.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_feb5d"]
-[ext_resource type="Script" uid="uid://c57gu50gq8i6i" path="res://zombie.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="3_feb5d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -57,10 +57,10 @@ texture = ExtResource("2_feb5d")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
-[node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_target")]
+[node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(616, 777)
 script = ExtResource("3_feb5d")
-_target = NodePath("../Player")
+target = NodePath("../Player")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Zombie"]

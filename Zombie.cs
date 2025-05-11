@@ -70,15 +70,15 @@ public partial class Zombie : Character
 
     private void ComputeNextState()
     {
-        if (TargetInAttackRange())
-        {
-            currentState = State.ATTACKING;
-            return;
-        }
-
         if (IsTakingDamage())
         {
             currentState = State.STUNNED;
+            return;
+        }
+
+        if (TargetInAttackRange())
+        {
+            currentState = State.ATTACKING;
             return;
         }
 

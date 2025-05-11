@@ -14,9 +14,7 @@ public partial class HealthComponent : Node2D
     
     [Export] private int maxHealth;
     
-    [Export] private float shortLifebarDuration;
-    
-    [Export] private float longLifebarDuration;
+    [Export] private Hurtbox hurtbox;
    
     [Signal] public delegate void HealthSetEventHandler(int health);    
     
@@ -32,6 +30,20 @@ public partial class HealthComponent : Node2D
         
         EmitSignal(nameof(HealthSetEventHandler), tempHealth);
         
+        hurtbox.Connect(Hurtbox.SignalName.HurtboxHit, new Callable(this, nameof(HurtboxEvent)));
+        
+    }
+    
+    private void HurtboxEvent(int effect)
+    {
+        if (effect>0)
+        {
+            Heal(effect);
+        }
+        else if(effect<0)
+        {
+            ReceiveDamage(effect);
+        }
     }
     
     private void ReceiveDamage(int dmg)

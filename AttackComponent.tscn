@@ -10,7 +10,11 @@ height = 20.0
 script = ExtResource("1_ymle2")
 
 [node name="ShortRangeHit" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShortRangeHit"]
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_p0p7r")
+
+[node name="Timer" type="Timer" parent="."]

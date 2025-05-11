@@ -52,7 +52,7 @@ public partial class HealthComponent : Node2D
         {
             if(visibleBar)
             {
-                ToggleBar(true);            
+                ToggleLifeBar(true);            
             }
 
         }
@@ -66,7 +66,7 @@ public partial class HealthComponent : Node2D
         {
             tempHealth = maxHealth;
             
-            ToggleBar(false);
+            ToggleLifeBar(false);
         }
         
         
@@ -79,7 +79,7 @@ public partial class HealthComponent : Node2D
         EmitSignal(nameof(HealthDepletedEventHandler));
     }
     
-    private void ToggleBar(bool show)
+    private void ToggleLifeBar(bool show)
     {
         EmitSignal(nameof(ToggleBarEventHandler), show);
         

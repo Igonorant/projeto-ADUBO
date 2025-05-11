@@ -11,6 +11,7 @@ public partial class Zombie : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 direction = target.GlobalPosition - GlobalPosition;
-        MoveAndCollide(direction.Normalized() * speed * (float)delta);
+        Velocity = direction.Normalized() * speed * (float)delta;
+        MoveAndSlide();
     }
 }

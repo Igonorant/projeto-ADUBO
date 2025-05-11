@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr7cemjml5it6"]
+
+[ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="1_gvlnj"]
+[ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_7isjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
+size = Vector2(128, 127)
+
+[node name="Baby" type="CharacterBody2D" node_paths=PackedStringArray("mommy")]
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+motion_mode = 1
+script = ExtResource("1_gvlnj")
+mommy = NodePath("")
+maxDistanceToMommy = 150.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7isjw")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j5wjh")

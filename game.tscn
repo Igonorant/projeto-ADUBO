@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b63q0g84lqunx"]
+[gd_scene load_steps=14 format=3 uid="uid://b63q0g84lqunx"]
 
-[ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_7jktm"]
-[ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_e2o6t"]
-[ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_feb5d"]
-[ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="3_feb5d"]
-[ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="4_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_sb48q"]
+[ext_resource type="PackedScene" uid="uid://8nqgxwsk6dbw" path="res://Player.tscn" id="2_t88pq"]
+[ext_resource type="PackedScene" uid="uid://bdh3jnpvq162o" path="res://Zombie.tscn" id="3_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://dr7cemjml5it6" path="res://Baby.tscn" id="4_3mrqo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -31,9 +30,6 @@ size = Vector2(209, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
 size = Vector2(204.5, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
-size = Vector2(128, 127)
 
 [node name="Game" type="Node"]
 
@@ -62,7 +58,8 @@ debug_color = Color(0.62079, 0.53412, 0, 0.42)
 [node name="Background" type="TextureRect" parent="World"]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_7jktm")
+texture = ExtResource("1_sb48q")
+metadata/_edit_use_anchors_ = true
 
 [node name="HomeWalls" type="Area2D" parent="World"]
 
@@ -86,20 +83,11 @@ shape = SubResource("RectangleShape2D_vef74")
 position = Vector2(1056.75, 530)
 shape = SubResource("RectangleShape2D_hve3p")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_t88pq")]
 position = Vector2(889, 397)
-scale = Vector2(0.2, 0.2)
-script = ExtResource("1_e2o6t")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_feb5d")
-
-[node name="HitBox" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(1, 1)
 zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
@@ -111,33 +99,8 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
-[node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Zombie" parent="." instance=ExtResource("3_r0x5m")]
 position = Vector2(245, 873)
-rotation = -3.14159
-scale = Vector2(0.35, 0.35)
-script = ExtResource("3_feb5d")
-target = NodePath("../Player")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Zombie"]
-texture = ExtResource("2_feb5d")
-
-[node name="HitBox" type="CollisionShape2D" parent="Zombie"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j5wjh")
-
-[node name="Baby" type="CharacterBody2D" parent="." node_paths=PackedStringArray("mommy")]
+[node name="Baby" parent="." instance=ExtResource("4_3mrqo")]
 position = Vector2(1112, 337)
-rotation = 1.5708
-scale = Vector2(0.1, 0.1)
-script = ExtResource("4_fc0e3")
-mommy = NodePath("../Player")
-maxDistanceToMommy = 150.0
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Baby"]
-texture = ExtResource("2_feb5d")
-
-[node name="HitBox" type="CollisionShape2D" parent="Baby"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j5wjh")

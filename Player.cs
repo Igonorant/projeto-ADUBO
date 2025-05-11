@@ -23,7 +23,7 @@ public partial class Player : CharacterBody2D
             direction.X = 1.0f;
         }
         Velocity = direction.Normalized() * 200;
-        MoveAndCollide(direction.Normalized() * 200 * (float)delta);
+        MoveAndSlide();
     }
 
 }

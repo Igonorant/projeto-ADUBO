@@ -7,6 +7,7 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_ggl66")
+maxHealth = 100
 metadata/_custom_type_script = "uid://bbyjbh3wt3toa"
 
 [node name="LifeBar" type="TextureProgressBar" parent="."]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://b63q0g84lqunx"]
 
 [ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_sb48q"]
-[ext_resource type="PackedScene" uid="uid://8nqgxwsk6dbw" path="res://Player.tscn" id="2_t88pq"]
-[ext_resource type="PackedScene" uid="uid://bdh3jnpvq162o" path="res://Zombie.tscn" id="3_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://dr7cemjml5it6" path="res://Baby.tscn" id="4_3mrqo"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="2_t88pq"]
+[ext_resource type="PackedScene" path="res://Zombie.tscn" id="3_r0x5m"]
+[ext_resource type="PackedScene" path="res://Baby.tscn" id="4_3mrqo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -87,7 +87,6 @@ shape = SubResource("RectangleShape2D_hve3p")
 position = Vector2(889, 397)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(1, 1)
 zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true

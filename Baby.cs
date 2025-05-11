@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Baby : CharacterBody2D
+public partial class Baby : Character
 {
     [Export] public CharacterBody2D mommy;
     [Export] public float maxDistanceToMommy = 500;

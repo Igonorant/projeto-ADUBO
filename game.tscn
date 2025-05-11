@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b63q0g84lqunx"]
+[gd_scene load_steps=11 format=3 uid="uid://b63q0g84lqunx"]
 
+[ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_7jktm"]
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="3_feb5d"]
@@ -43,8 +44,14 @@ position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_eow3j")
 debug_color = Color(0.62079, 0.53412, 0, 0.42)
 
+[node name="TextureRect" type="TextureRect" parent="Home"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_7jktm")
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(386, 197)
+position = Vector2(889, 397)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_e2o6t")
 metadata/_edit_group_ = true
 
@@ -56,8 +63,9 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(616, 777)
-rotation = 0.785398
+position = Vector2(245, 873)
+rotation = 3.14159
+scale = Vector2(0.35, 0.35)
 script = ExtResource("3_feb5d")
 target = NodePath("../Player")
 metadata/_edit_group_ = true
@@ -70,11 +78,12 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Baby" type="CharacterBody2D" parent="." node_paths=PackedStringArray("mommy")]
-position = Vector2(892, 539)
+position = Vector2(1112, 337)
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.1, 0.1)
 script = ExtResource("4_fc0e3")
 mommy = NodePath("../Player")
+maxDistanceToMommy = 300.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Baby"]

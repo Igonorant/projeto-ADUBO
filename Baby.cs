@@ -36,7 +36,6 @@ public partial class Baby : CharacterBody2D
                 currentDirection.X = rng.RandfRange(-1.0f, 1.0f);
                 currentDirection.Y = rng.RandfRange(-1.0f, 1.0f);
                 currentDirection = currentDirection.Normalized();
-                GD.Print(currentDirection);
             }
             MoveAndCollide(currentDirection * babySpeed * (float)delta);
         }

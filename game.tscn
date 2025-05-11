@@ -56,7 +56,6 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
-visible = false
 position = Vector2(616, 777)
 rotation = 0.785398
 script = ExtResource("3_feb5d")

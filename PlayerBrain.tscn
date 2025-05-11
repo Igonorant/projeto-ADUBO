@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://crfrsal7bucfs"]
+
+[ext_resource type="PackedScene" uid="uid://dpib05j0j80en" path="res://BrainComponent.tscn" id="1_0nudl"]
+[ext_resource type="Script" uid="uid://b7wdbojrso53k" path="res://PlayerBrain.cs" id="2_5u54u"]
+
+[node name="PlayerBrain" instance=ExtResource("1_0nudl")]
+script = ExtResource("2_5u54u")

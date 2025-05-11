@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_kne1u"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
-[ext_resource type="PackedScene" uid="uid://dpib05j0j80en" path="res://BrainComponent.tscn" id="3_tdg3f"]
+[ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="5_cxr5p"]
 
@@ -26,7 +26,8 @@ texture = ExtResource("2_kne1u")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
-[node name="BrainComponent" parent="." instance=ExtResource("3_tdg3f")]
+[node name="PlayerBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_tdg3f")]
+hurtbox = NodePath("../Hurtbox")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_e80uo")]
 position = Vector2(-15, -75)

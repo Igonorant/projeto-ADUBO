@@ -3,6 +3,16 @@ using System;
 
 public partial class Player : Character
 {
+
+    private AttackComponent attackComponent;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        attackComponent = (AttackComponent)FindChild("AttackComponent");
+
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         Vector2 direction = new Vector2(0.0f, 0.0f);
@@ -24,6 +34,12 @@ public partial class Player : Character
         }
         Velocity = direction.Normalized() * 200;
         MoveAndSlide();
+
+        // Update attack component based on movement
+        if (!direction.IsZeroApprox())
+        {
+            attackComponent.Rotation = direction.Angle();
+        }
     }
 
 }

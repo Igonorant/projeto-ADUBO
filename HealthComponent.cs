@@ -7,6 +7,7 @@ using System.Reflection;
 public partial class HealthComponent : Node2D
 {
     private int tempHealth;
+    
     [Export] private int maxHealth;
    
     [Signal] public delegate void HealthSetEventHandler(int health);    
@@ -20,6 +21,7 @@ public partial class HealthComponent : Node2D
         tempHealth = maxHealth;
         
         EmitSignal(nameof(HealthSetEventHandler), tempHealth);
+        
     }
     
     private void ReceiveDamage(int dmg)
@@ -31,8 +33,10 @@ public partial class HealthComponent : Node2D
             tempHealth = 0;
             Die();
         }
-        
-        EmitSignal(nameof(HealthChangedEventHandler), -dmg);
+        else
+        {
+           EmitSignal(nameof(HealthChangedEventHandler), -dmg);         
+        }
     }
     
     private void Heal(int heal)

@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdtjcmd85elfc"]
+[gd_scene load_steps=5 format=3 uid="uid://bdtjcmd85elfc"]
 
 [ext_resource type="Script" uid="uid://bbyjbh3wt3toa" path="res://HealthComponent.cs" id="1_ggl66"]
+[ext_resource type="Texture2D" uid="uid://dy7igjlbweca8" path="res://Sprites/UI/barraEmpty.png" id="2_ao835"]
+[ext_resource type="Texture2D" uid="uid://b0fy8yhoegqk2" path="res://Sprites/UI/barraFull.png" id="3_26df7"]
+[ext_resource type="Script" uid="uid://cbdgw7njye3m1" path="res://TextureProgressBar.cs" id="4_quw0j"]
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_ggl66")
 metadata/_custom_type_script = "uid://bbyjbh3wt3toa"
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("2_ao835")
+texture_over = ExtResource("3_26df7")
+script = ExtResource("4_quw0j")

@@ -6,8 +6,10 @@
 radius = 8.0
 height = 20.0
 
-[node name="AttackComponent" type="Node"]
+[node name="AttackComponent" type="Node2D" node_paths=PackedStringArray("shortRangeArea", "timer")]
 script = ExtResource("1_ymle2")
+shortRangeArea = NodePath("ShortRangeHit/CollisionShape2D")
+timer = NodePath("Timer")
 
 [node name="ShortRangeHit" type="Area2D" parent="."]
 collision_layer = 8

@@ -7,13 +7,13 @@
 size = Vector2(128, 127)
 
 [node name="Zombie" type="CharacterBody2D"]
-rotation = -3.14159
 scale = Vector2(0.35, 0.35)
 motion_mode = 1
 script = ExtResource("1_g6hu2")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
 texture = ExtResource("2_vrb4v")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]

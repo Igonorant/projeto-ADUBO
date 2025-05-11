@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b63q0g84lqunx"]
+[gd_scene load_steps=14 format=3 uid="uid://c7ldxyrv0aej3"]
 
 [ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_sb48q"]
-[ext_resource type="PackedScene" path="res://Player.tscn" id="2_t88pq"]
-[ext_resource type="PackedScene" path="res://Zombie.tscn" id="3_r0x5m"]
-[ext_resource type="PackedScene" path="res://Baby.tscn" id="4_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://8nqgxwsk6dbw" path="res://Player.tscn" id="2_t88pq"]
+[ext_resource type="PackedScene" uid="uid://bdh3jnpvq162o" path="res://Zombie.tscn" id="3_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://dr7cemjml5it6" path="res://Baby.tscn" id="4_3mrqo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -98,9 +98,10 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
-[node name="Zombie" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r0x5m")]
+[node name="Zombie" parent="." node_paths=PackedStringArray("mommy", "baby") instance=ExtResource("3_r0x5m")]
 position = Vector2(245, 873)
-target = NodePath("../Player")
+mommy = NodePath("../Player")
+baby = NodePath("../Baby")
 
 [node name="Baby" parent="." node_paths=PackedStringArray("mommy") instance=ExtResource("4_3mrqo")]
 position = Vector2(1112, 337)

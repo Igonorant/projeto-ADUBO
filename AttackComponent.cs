@@ -44,7 +44,7 @@ public partial class AttackComponent : Node2D
 
                 timer.Start();
 
-                shortRangeShape.Disabled = false;
+        shortRangeShape.SetDeferred("disabled", false);
 
                 break;
         }
@@ -75,7 +75,7 @@ public partial class AttackComponent : Node2D
         
         hurtbox.IsHitByLifeAlteringEffect(package);
         
-        shortRangeShape.Disabled = true;
+        shortRangeShape.SetDeferred("disabled", true);
 
     }
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="4_fc0e3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -17,9 +18,6 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fc0e3"]
-blend_mode = 1
 
 [node name="Game" type="Node"]
 
@@ -58,15 +56,31 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="Zombie" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+visible = false
 position = Vector2(616, 777)
+rotation = 0.785398
 script = ExtResource("3_feb5d")
 target = NodePath("../Player")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Zombie"]
-material = SubResource("CanvasItemMaterial_fc0e3")
 texture = ExtResource("2_feb5d")
 
 [node name="HitBox" type="CollisionShape2D" parent="Zombie"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j5wjh")
+
+[node name="Baby" type="CharacterBody2D" parent="." node_paths=PackedStringArray("mommy")]
+position = Vector2(892, 539)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_fc0e3")
+mommy = NodePath("../Player")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Baby"]
+texture = ExtResource("2_feb5d")
+
+[node name="HitBox" type="CollisionShape2D" parent="Baby"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")

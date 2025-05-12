@@ -28,7 +28,6 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="ZombieBrain" parent="." instance=ExtResource("3_dtdss")]
-enableDebug = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("4_dtdss")]
 scale = Vector2(1, 1)

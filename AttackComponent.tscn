@@ -7,10 +7,11 @@
 radius = 102.0
 height = 326.0
 
-[node name="AttackComponent" type="Node2D" node_paths=PackedStringArray("shortRangeShape", "timer")]
+[node name="AttackComponent" type="Node2D" node_paths=PackedStringArray("shortRangeShape", "strikeTimer", "cooldownTimer")]
 script = ExtResource("1_ymle2")
 shortRangeShape = NodePath("ShortRangeHit/CollisionShape2D")
-timer = NodePath("Timer")
+strikeTimer = NodePath("Timer")
+cooldownTimer = NodePath("CooldownTimer")
 
 [node name="ShortRangeHit" type="Area2D" parent="."]
 collision_layer = 8
@@ -25,3 +26,5 @@ disabled = true
 debug_color = Color(0.529879, 0.571186, 0, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CooldownTimer" type="Timer" parent="."]

@@ -45,5 +45,6 @@ disabled = true
 debug_color = Color(0.975015, 0, 0.422536, 0.42)
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_cxr5p")]
+cooldown = 1.0
 attackPower = 10
 attackDuration = 0.3

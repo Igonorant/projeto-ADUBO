@@ -10,6 +10,10 @@ public enum AttackType
 [GlobalClass]
 public partial class AttackComponent : Node2D
 {
+    private bool activableState = true;
+
+    [Export] private float cooldown;
+
     [Export] private int attackPower;
     
     [Export] private float stunTime;
@@ -22,33 +26,45 @@ public partial class AttackComponent : Node2D
 
     [Export] private CollisionShape2D shortRangeShape;
 
-    [Export] private Timer timer;
+    [Export] private Timer strikeTimer;
+    
+    [Export] private Timer cooldownTimer;
 
 
     public override void _Ready()
     {
         GetParent<Character>().Connect(Character.SignalName.Attacking, new Callable(this, nameof(Attack)));
 
-        timer.Timeout += OnTimerTimeOut;
+        strikeTimer.Timeout += OnTimerTimeOut;
+        
+        cooldownTimer.Timeout += OnCooldownTimerTimeout;
 
     }
 
     private void Attack(int attackType)
     {
-        switch ((AttackType)attackType)
+        if(activableState)
         {
-            case AttackType.BaseMelee:
+                switch ((AttackType)attackType)
+            {
+                case AttackType.BaseMelee:
 
-                // Set the timer duration
-                timer.WaitTime = attackDuration;
+                    // Set the timer duration
+                    strikeTimer.WaitTime = attackDuration;
 
-                timer.Start();
+                    strikeTimer.Start();
 
-        shortRangeShape.SetDeferred("disabled", false);
+                    shortRangeShape.SetDeferred("disabled", false);
+                    
+                    StartCooldown(cooldown);
 
-                break;
+                    break;
+            } 
         }
-
+        else
+        {
+            GD.Print("COOLDOWN!");
+        }
     }
 
     private void OnTimerTimeOut()
@@ -56,7 +72,7 @@ public partial class AttackComponent : Node2D
         GD.Print("ATAQUEI!");
         shortRangeShape.Disabled = true;
         
-        timer.Stop();
+        strikeTimer.Stop();
     }
 
     public void OnBodyEntered(Node2D body)
@@ -78,5 +94,18 @@ public partial class AttackComponent : Node2D
         shortRangeShape.SetDeferred("disabled", true);
 
     }
-
+    
+    private void StartCooldown(float waitTime)
+    {
+        cooldownTimer.WaitTime = waitTime;
+        
+        activableState = false;
+        
+        cooldownTimer.Start();
+    }
+    
+    private void OnCooldownTimerTimeout()
+    {
+        activableState = true;
+    }
 }

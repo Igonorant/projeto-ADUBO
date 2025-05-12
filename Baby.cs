@@ -39,6 +39,8 @@ public partial class Baby : Character
     }
     private State currentState = State.IDLE;
 
+    private AnimationPlayer animation;
+
     private PackedScene debugLabelScene = (PackedScene)GD.Load("uid://bexfqv8srwl01");
     private Label debugLabel = null;
 
@@ -62,6 +64,8 @@ public partial class Baby : Character
         currentState = State.IDLE;
         idleTimer.Start();
 
+        animation = (AnimationPlayer)FindChild("AnimationPlayer");
+
         if (enableDebug)
         {
             debugLabel = debugLabelScene.Instantiate<Label>();
@@ -81,6 +85,39 @@ public partial class Baby : Character
             case State.WANDERING: HandleWanderingState(); break;
             case State.FOLLOWING: HandleFollowingState(); break;
             case State.STUNNED: HandleStunnedState(); break;
+        }
+
+
+        Vector2 velocityAbs = Velocity.Abs();
+        if (Velocity.IsZeroApprox())
+        {
+            animation.Play("moving_down");
+        }
+        else
+        {
+            if (velocityAbs.X > velocityAbs.Y)
+            {
+                // Moving right/left
+                if (Velocity.X >= 0.0f)
+                {
+                    animation.Play("moving_right");
+                }
+                else
+                {
+                    animation.Play("moving_left");
+                }
+            }
+            else
+            {
+                if (Velocity.Y <= 0.0f)
+                {
+                    animation.Play("moving_up");
+                }
+                else
+                {
+                    animation.Play("moving_down");
+                }
+            }
         }
 
         MoveAndSlide();

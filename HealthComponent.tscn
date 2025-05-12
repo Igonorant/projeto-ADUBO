@@ -9,8 +9,10 @@
 script = ExtResource("1_ggl66")
 
 [node name="LifeBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = -5.0
+offset_right = 16.0
+offset_bottom = 5.0
 texture_under = ExtResource("2_ao835")
 texture_progress = ExtResource("3_26df7")
 script = ExtResource("4_quw0j")

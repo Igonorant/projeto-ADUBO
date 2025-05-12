@@ -2,5 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bq1b76iygnifj" path="res://BrainComponent.cs" id="1_fe16k"]
 
-[node name="BrainComponent" type="Node"]
+[node name="BrainComponent" type="Node" node_paths=PackedStringArray("stunTimer")]
 script = ExtResource("1_fe16k")
+stunTimer = NodePath("StunTimer")
+
+[node name="StunTimer" type="Timer" parent="."]

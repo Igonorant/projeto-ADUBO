@@ -8,6 +8,7 @@ public partial class ZombieBrain : BrainComponent
     private PackedScene debugLabelScene = (PackedScene)GD.Load("uid://bexfqv8srwl01");
     private Label debugLabel = null;
 
+
     // States
     private enum State
     {
@@ -65,19 +66,23 @@ public partial class ZombieBrain : BrainComponent
 
     private void ComputeNextState()
     {
-        if (IsTakingDamage())
+        if (isStunned)
         {
             currentState = State.STUNNED;
             return;
         }
-
-        if (TargetInAttackRange())
+        else
         {
-            currentState = State.ATTACKING;
-            return;
-        }
+            if (TargetInAttackRange())
+            {
+                currentState = State.ATTACKING;
+                return;
+            }
 
-        currentState = State.CHASING;
+            currentState = State.CHASING; 
+        }
+        
+
     }
 
     private bool TargetInAttackRange()

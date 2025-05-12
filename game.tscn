@@ -100,7 +100,6 @@ drag_bottom_margin = 0.1
 
 [node name="Baby" parent="." node_paths=PackedStringArray("mommy") instance=ExtResource("4_3mrqo")]
 position = Vector2(1112, 337)
-enableDebug = true
 mommy = NodePath("../Player")
 maxDistanceToMommy = 135.0
 wanderingTime = 1.5

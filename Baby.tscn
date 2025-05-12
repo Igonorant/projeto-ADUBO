@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbfisu8xawer4"]
+[gd_scene load_steps=15 format=3 uid="uid://cbfisu8xawer4"]
 
 [ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="1_gvlnj"]
 [ext_resource type="Texture2D" uid="uid://d1hsh6mofvytn" path="res://assets/baby-Sheet.png" id="2_b48xg"]
+[ext_resource type="PackedScene" uid="uid://dklwete8c0vt" path="res://BabyBrain.tscn" id="2_voakt"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_b48xg"]
 [ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="4_voakt"]
 
@@ -203,6 +204,11 @@ motion_mode = 1
 script = ExtResource("1_gvlnj")
 healthComponent = NodePath("HealthComponent")
 
+[node name="BabyBrain" parent="." node_paths=PackedStringArray("animation", "hurtbox") instance=ExtResource("2_voakt")]
+enableDebug = true
+animation = NodePath("../AnimationPlayer")
+hurtbox = NodePath("../Hurtbox")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_b48xg")
 hframes = 9
@@ -210,15 +216,6 @@ vframes = 4
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_voakt")
-
-[node name="IdleTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="WanderingTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="FollowingTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_b48xg")]
 position = Vector2(0, -13)

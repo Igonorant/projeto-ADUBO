@@ -5,15 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
-[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="5_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="5_cxr5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
-size = Vector2(128, 127)
+size = Vector2(30, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdg3f"]
-radius = 110.114
+radius = 20.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
+position = Vector2(1, 3)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 script = ExtResource("1_kpjcp")
@@ -21,17 +22,18 @@ healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_kne1u")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="PlayerBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_tdg3f")]
 hurtbox = NodePath("../Hurtbox")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_e80uo")]
-position = Vector2(-15, -75)
+position = Vector2(-1.90735e-06, -25)
 visibleBar = true
 maxHealth = 100
 hurtbox = NodePath("../Hurtbox")

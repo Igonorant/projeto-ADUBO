@@ -122,7 +122,8 @@ public partial class BabyBrain : BrainComponent
 
     private void ComputeNextState()
     {
-        if (IsTakingDamage())
+        
+        if (IsTakingDamage() || isStunned)
         {
             currentState = State.STUNNED;
         }

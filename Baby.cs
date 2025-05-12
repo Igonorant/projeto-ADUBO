@@ -91,7 +91,7 @@ public partial class Baby : Character
         Vector2 velocityAbs = Velocity.Abs();
         if (Velocity.IsZeroApprox())
         {
-            animation.Play("moving_down");
+            animation.Play("idle");
         }
         else
         {

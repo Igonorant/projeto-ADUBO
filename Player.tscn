@@ -14,16 +14,17 @@ size = Vector2(30, 30)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdg3f"]
 radius = 20.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "brainComponent", "interactionComponent", "healthComponent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "brain", "interactionComponent", "healthComponent")]
 motion_mode = 1
 script = ExtResource("1_kpjcp")
 attackComponent = NodePath("AttackComponent")
-brainComponent = NodePath("PlayerBrain")
+brain = NodePath("PlayerBrain")
 interactionComponent = NodePath("InteractionComponent")
 healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
 [node name="PlayerBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_tdg3f")]
+enableDebug = true
 hurtbox = NodePath("../Hurtbox")
 
 [node name="PlayerSprite" parent="." node_paths=PackedStringArray("attackComponent", "healthComponent") instance=ExtResource("2_tdg3f")]

@@ -5,7 +5,7 @@ public partial class Player : Character
 {
 
     [Export] private AttackComponent attackComponent;
-    [Export] private BrainComponent brainComponent;
+    [Export] private PlayerBrain brain;
     [Export] private InteractionComponent interactionComponent;
 
     public override void _Ready()
@@ -16,19 +16,19 @@ public partial class Player : Character
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 direction = brainComponent.GetMovingDirection();
+        Vector2 direction = brain.GetMovingDirection();
         Velocity = direction * 200;
 
         if (!Velocity.IsZeroApprox())
         {
-            attackComponent.Rotation = brainComponent.GetAttackDirection().Angle();
-            
-            interactionComponent.Rotation = brainComponent.GetAttackDirection().Angle();
+            attackComponent.Rotation = brain.GetAttackDirection().Angle();
+
+            interactionComponent.Rotation = brain.GetAttackDirection().Angle();
         }
 
         MoveAndSlide();
     }
-    
+
     protected override void Die()
     {
         GD.Print("GAME OVER");

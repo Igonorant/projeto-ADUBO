@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Projeto ADUBO"
-run/main_scene="uid://c7ldxyrv0aej3"
+run/main_scene="uid://bgmvgov6hf7y"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 

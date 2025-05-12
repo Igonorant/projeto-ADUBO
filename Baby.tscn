@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="1_gvlnj"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_7isjw"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_b48xg"]
-[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="4_voakt"]
+[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="4_voakt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
@@ -34,6 +34,7 @@ one_shot = true
 one_shot = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_b48xg")]
+position = Vector2(-10, -80)
 hurtbox = NodePath("../Hurtbox")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_voakt")]

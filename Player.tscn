@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
-[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="5_cxr5p"]
+[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="5_cxr5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(30, 30)

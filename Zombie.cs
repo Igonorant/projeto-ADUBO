@@ -13,13 +13,14 @@ public partial class Zombie : Character
     [Export] public float chasingMommyDistance = 75.0f;
     [Export] public float attackRange = 50.0f;
 
-    [Export] private ZombieBrain brain;
+    private ZombieBrain brain;
 
     public override void _Ready()
     {
         base._Ready();
         // attackComponent = (AttackComponent)FindChild("AttackComponent");
 
+        brain = (ZombieBrain)FindChild("ZombieBrain");
         brain.SetTarget(baby);
         brain.SetAttackRange(attackRange);
     }
@@ -41,10 +42,10 @@ public partial class Zombie : Character
     }
 
 
-        protected override void Die()
+    protected override void Die()
     {
         GD.Print("Zombidead");
-        
+
         this.QueueFree();
     }
 }

@@ -18,12 +18,12 @@ script = ExtResource("1_g6hu2")
 healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
+[node name="ZombieBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_dtdss")]
+hurtbox = NodePath("../Hurtbox")
+
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
-
-[node name="ZombieBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_dtdss")]
-hurtbox = NodePath("../Hurtbox")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("4_dtdss")]
 position = Vector2(-1, -74)

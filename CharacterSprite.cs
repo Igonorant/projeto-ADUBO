@@ -8,6 +8,15 @@ public partial class CharacterSprite : Sprite2D
         [Export] private Timer hurtIndicationTimer;
     
         [Export] private float hurtIndicationDuration;
+         
+        [Export] private Material hurtingMaterial;
+        
+        protected Material originalMaterial;
+        
+        protected bool isHurt = false;
+        
+        protected bool isInCooldown = false;
+        
         
         public override void _Ready()
         {
@@ -16,14 +25,22 @@ public partial class CharacterSprite : Sprite2D
         
         hurtIndicationTimer.Timeout += EndHurtIndication;
         
+        originalMaterial = this.Material;
+               
         }
 
         private void InitiateHurtIndication(int damage)
     {
         if(damage < 0)
         {
-                  this.SelfModulate = new Color(1, 0, 0, 1);
-    
+        
+            isHurt = true;
+            
+
+            this.Material = hurtingMaterial;
+                //this.SelfModulate = new Color(1, 0, 0, 1);            
+            
+  
         hurtIndicationTimer.WaitTime = hurtIndicationDuration;
         
         hurtIndicationTimer.Start();  
@@ -33,7 +50,10 @@ public partial class CharacterSprite : Sprite2D
     
     private void EndHurtIndication()
     {   
-        this.SelfModulate = new Color(0, 0, 0, 0);
+        isHurt = false;
+        
+        this.Material = originalMaterial;
+        //this.SelfModulate = new Color(0, 0, 0, 0);
         
         hurtIndicationTimer.Stop();
     }

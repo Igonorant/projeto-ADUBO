@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://di035nnllqtkn"]
+
+[ext_resource type="Shader" uid="uid://c2r1224ka45ha" path="res://HurtingSprite.gdshader" id="1_r7yok"]
+
+[resource]
+shader = ExtResource("1_r7yok")

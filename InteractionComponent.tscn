@@ -1,18 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyxpvijqkb82o"]
+[gd_scene load_steps=4 format=3 uid="uid://dyxpvijqkb82o"]
 
 [ext_resource type="Script" uid="uid://c1o0pvaaqwuhd" path="res://InteractionComponent.cs" id="1_iq0u2"]
+[ext_resource type="Script" uid="uid://cy31mlm6rlgbu" path="res://InteractionHit.cs" id="2_v22em"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v22em"]
 radius = 11.0
 
-[node name="InteractionComponent" type="Node2D" node_paths=PackedStringArray("interactionShape")]
+[node name="InteractionComponent" type="Node2D" node_paths=PackedStringArray("interactionArea", "interactionTimer")]
 script = ExtResource("1_iq0u2")
-interactionShape = NodePath("Area2D/CollisionShape2D")
+interactionArea = NodePath("Area2D/CollisionShape2D")
+interactionTimer = NodePath("InteractionTimer")
+interactionDelay = 0.1
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("2_v22em")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(14, 0)
 shape = SubResource("CapsuleShape2D_v22em")
+
+[node name="InteractionTimer" type="Timer" parent="."]

@@ -22,6 +22,7 @@ public partial class InteractionComponent : Node2D
 
     private void Interact()
     {
+        GD.Print("INTERACT!");
         interactionTimer.WaitTime = interactionDelay;
         interactionTimer.Start();
     }
@@ -33,7 +34,7 @@ public partial class InteractionComponent : Node2D
     
     public void OnBodyDetected(Node2D body)
     {
-        GD.Print("InTERACT!!");
+        GD.Print("Body detected!");
     }
 }
 

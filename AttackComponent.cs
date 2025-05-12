@@ -29,6 +29,8 @@ public partial class AttackComponent : Node2D
     [Export] private Timer strikeTimer;
     
     [Export] private Timer cooldownTimer;
+    
+    [Signal] public delegate void CooldownEndEventHandler();
 
 
     public override void _Ready()
@@ -107,5 +109,9 @@ public partial class AttackComponent : Node2D
     private void OnCooldownTimerTimeout()
     {
         activableState = true;
+        
+        EmitSignal(nameof(CooldownEnd));
+        
+        cooldownTimer.Stop();
     }
 }

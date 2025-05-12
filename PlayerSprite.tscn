@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctk15jxnc27ys"]
+
+[ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="1_cc3fp"]
+[ext_resource type="Script" uid="uid://c0o0dac3e1cn1" path="res://PlayerSprite.cs" id="2_ncbcj"]
+
+[node name="PlayerSprite" type="Sprite2D" node_paths=PackedStringArray("cooldownIndicationTimer", "hurtIndicationTimer")]
+self_modulate = Color(0.337255, 1, 0, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_cc3fp")
+script = ExtResource("2_ncbcj")
+cooldownIndicationTimer = NodePath("CooldownTimer")
+cooldownIndicationDuration = 0.15
+hurtIndicationTimer = NodePath("HurtTimer")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+show_behind_parent = true
+texture = ExtResource("1_cc3fp")
+
+[node name="HurtTimer" type="Timer" parent="."]

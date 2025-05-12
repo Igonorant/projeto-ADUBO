@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://8nqgxwsk6dbw"]
 
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_kne1u"]
+[ext_resource type="PackedScene" uid="uid://ctk15jxnc27ys" path="res://PlayerSprite.tscn" id="2_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
@@ -14,16 +14,14 @@ size = Vector2(30, 30)
 radius = 20.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
-position = Vector2(1, 3)
-scale = Vector2(0.2, 0.2)
 motion_mode = 1
 script = ExtResource("1_kpjcp")
 healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_kne1u")
+[node name="PlayerSprite" parent="." node_paths=PackedStringArray("attackComponent", "healthComponent") instance=ExtResource("2_tdg3f")]
+attackComponent = NodePath("../AttackComponent")
+healthComponent = NodePath("../HealthComponent")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 1)

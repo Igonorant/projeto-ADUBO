@@ -31,7 +31,7 @@ public partial class Zombie : Character
         brain.SetTarget(distanceToMommy.Length() < chasingMommyDistance ? mommy : baby);
 
         Vector2 direction = brain.GetMovingDirection();
-        Velocity = direction * 200;
+        Velocity = direction * speed;
 
         // if (!Velocity.IsZeroApprox())
         // {

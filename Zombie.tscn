@@ -27,6 +27,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="ZombieBrain" parent="." instance=ExtResource("3_dtdss")]
+enableDebug = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_ykpkj")]
 

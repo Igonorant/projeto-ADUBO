@@ -43,8 +43,8 @@ public partial class ZombieBrain : BrainComponent
         if (enableDebug)
         {
             debugLabel = debugLabelScene.Instantiate<Label>();
-            parentCharacter.CallDeferred("AddChild", debugLabel);
             debugLabel.Scale = new Vector2(1.0f / parentCharacter.Scale.X, 1.0f / parentCharacter.Scale.Y);
+            parentCharacter.CallDeferred("add_child", debugLabel);
         }
     }
 

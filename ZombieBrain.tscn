@@ -5,4 +5,4 @@
 
 [node name="ZombieBrain" instance=ExtResource("1_03al7")]
 script = ExtResource("2_f4nym")
-enableDebug = true
+enableDebug = false

@@ -79,9 +79,9 @@ public partial class ZombieBrain : BrainComponent
                 return;
             }
 
-            currentState = State.CHASING; 
+            currentState = State.CHASING;
         }
-        
+
 
     }
 

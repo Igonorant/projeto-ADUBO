@@ -15,11 +15,11 @@ public partial class AttackComponent : Node2D
     [Export] private float cooldown;
 
     [Export] private int attackPower;
-    
+
     [Export] private float stunTime;
-    
+
     [Export] private float knockback;
-    
+
     [Export] private AttackType attackType;
 
     [Export] private float attackDuration;
@@ -27,9 +27,9 @@ public partial class AttackComponent : Node2D
     [Export] private CollisionShape2D shortRangeShape;
 
     [Export] private Timer strikeTimer;
-    
+
     [Export] private Timer cooldownTimer;
-    
+
     [Signal] public delegate void CooldownEndEventHandler();
 
 
@@ -38,16 +38,16 @@ public partial class AttackComponent : Node2D
         GetParent<Character>().Connect(Character.SignalName.AttackOrdered, new Callable(this, nameof(Attack)));
 
         strikeTimer.Timeout += OnTimerTimeOut;
-        
+
         cooldownTimer.Timeout += OnCooldownTimerTimeout;
 
     }
 
     private void Attack(int attackType)
     {
-        if(activableState)
+        if (activableState)
         {
-                switch ((AttackType)attackType)
+            switch ((AttackType)attackType)
             {
                 case AttackType.BaseMelee:
 
@@ -57,11 +57,11 @@ public partial class AttackComponent : Node2D
                     strikeTimer.Start();
 
                     shortRangeShape.SetDeferred("disabled", false);
-                    
+
                     StartCooldown(cooldown);
 
                     break;
-            } 
+            }
         }
         else
         {
@@ -73,45 +73,47 @@ public partial class AttackComponent : Node2D
     {
         GD.Print("ATAQUEI!");
         shortRangeShape.SetDeferred("disabled", true);
-        
+
         strikeTimer.Stop();
     }
 
     public void OnBodyEntered(Node2D body)
     {
         GD.Print("ACERTEI!");
-    
+
         Hurtbox hurtbox = (Hurtbox)body;
-        
+
         EffectPackage package = new EffectPackage();
-        
+
         package.damage = -attackPower;
-        
+
         package.stunTime = stunTime;
-        
+
         package.knockback = knockback;
-        
+
+        package.offenderPosition = body.GlobalPosition;
+
         hurtbox.IsHitByLifeAlteringEffect(package);
-        
+
         shortRangeShape.SetDeferred("disabled", true);
 
     }
-    
+
     private void StartCooldown(float waitTime)
     {
         cooldownTimer.WaitTime = waitTime;
-        
+
         activableState = false;
-        
+
         cooldownTimer.Start();
     }
-    
+
     private void OnCooldownTimerTimeout()
     {
         activableState = true;
-        
+
         EmitSignal(nameof(CooldownEnd));
-        
+
         cooldownTimer.Stop();
     }
 }

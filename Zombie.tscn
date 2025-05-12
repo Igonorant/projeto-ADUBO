@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="1_g6hu2"]
 [ext_resource type="PackedScene" uid="uid://cinttrd72nxcj" path="res://ZombieBrain.tscn" id="3_dtdss"]
-[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="3_ykpkj"]
+[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="3_ykpkj"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="4_dtdss"]
 [ext_resource type="PackedScene" uid="uid://ctk15jxnc27ys" path="res://CharacterSprite.tscn" id="5_dtdss"]
 

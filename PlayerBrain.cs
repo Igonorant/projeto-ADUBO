@@ -14,39 +14,51 @@ public partial class PlayerBrain : BrainComponent
 
     public override void _PhysicsProcess(double delta)
     {
-        if (Input.IsActionJustPressed("attack"))
+        if(!isStunned)
         {
-            parentCharacter.Attack();
+            if (Input.IsActionJustPressed("attack"))
+            {
+                parentCharacter.Attack();
+            }
         }
+
     }
 
     public override Vector2 GetMovingDirection()
     {
-        last_direction = Vector2.Zero;
-        if (Input.IsActionPressed("up"))
+        if (!isStunned)
         {
-            last_direction.Y = -1.0f;
-        }
-        if (Input.IsActionPressed("down"))
-        {
-            last_direction.Y = 1.0f;
-        }
-        if (Input.IsActionPressed("left"))
-        {
-            last_direction.X = -1.0f;
-        }
-        if (Input.IsActionPressed("right"))
-        {
-            last_direction.X = 1.0f;
-        }
+            last_direction = Vector2.Zero;
+            if (Input.IsActionPressed("up"))
+            {
+                last_direction.Y = -1.0f;
+            }
+            if (Input.IsActionPressed("down"))
+            {
+                last_direction.Y = 1.0f;
+            }
+            if (Input.IsActionPressed("left"))
+            {
+                last_direction.X = -1.0f;
+            }
+            if (Input.IsActionPressed("right"))
+            {
+                last_direction.X = 1.0f;
+            }
 
-        if (last_direction.IsZeroApprox())
+            if (last_direction.IsZeroApprox())
+            {
+                return Vector2.Zero;
+            }
+
+            last_direction = last_direction.Normalized();
+            return last_direction;
+        }
+        else
         {
             return Vector2.Zero;
         }
-
-        last_direction = last_direction.Normalized();
-        return last_direction;
+       
     }
 
     public override Vector2 GetAttackDirection() { return last_direction; }

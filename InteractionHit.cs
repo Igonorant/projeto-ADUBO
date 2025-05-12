@@ -10,9 +10,7 @@ public override void _Ready()
     }
 
     private void OnAreaEntered(Area2D other)
-    {
-            GD.Print("sensor pegou overlap");
-    
+    {  
         GetParent<InteractionComponent>().OnBodyDetected(other);
     }
 }

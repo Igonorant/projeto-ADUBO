@@ -4,7 +4,7 @@ using System;
 public partial class Character : CharacterBody2D
 {
     [Export] protected HealthComponent healthComponent;
-    [Signal] public delegate void AttackingEventHandler(int attackType);
+    [Signal] public delegate void AttackOrderedEventHandler(int attackType);
 
     public override void _Ready()
     {
@@ -13,7 +13,7 @@ public partial class Character : CharacterBody2D
 
     public void Attack()
     {
-        EmitSignal(nameof(Attacking), (int)AttackType.BaseMelee);     
+        EmitSignal(nameof(AttackOrdered), (int)AttackType.BaseMelee);     
 
     }
     

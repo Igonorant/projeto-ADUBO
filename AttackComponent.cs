@@ -35,7 +35,7 @@ public partial class AttackComponent : Node2D
 
     public override void _Ready()
     {
-        GetParent<Character>().Connect(Character.SignalName.Attacking, new Callable(this, nameof(Attack)));
+        GetParent<Character>().Connect(Character.SignalName.AttackOrdered, new Callable(this, nameof(Attack)));
 
         strikeTimer.Timeout += OnTimerTimeOut;
         

@@ -18,7 +18,7 @@ public partial class AttackComponent : Node2D
 
     [Export] private float stunTime;
 
-    [Export] private float knockback;
+    [Export(PropertyHint.Range, "0,1000,1")] private float knockback;
 
     [Export] private AttackType attackType;
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdh3jnpvq162o"]
+[gd_scene load_steps=8 format=3 uid="uid://bdh3jnpvq162o"]
 
 [ext_resource type="Script" uid="uid://c03hstiwq88ar" path="res://Zombie.cs" id="1_g6hu2"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_vrb4v"]
+[ext_resource type="PackedScene" uid="uid://cinttrd72nxcj" path="res://ZombieBrain.tscn" id="3_dtdss"]
 [ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="3_ykpkj"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="4_dtdss"]
 
@@ -24,6 +25,8 @@ texture = ExtResource("2_vrb4v")
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5wjh")
+
+[node name="ZombieBrain" parent="." instance=ExtResource("3_dtdss")]
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_ykpkj")]
 

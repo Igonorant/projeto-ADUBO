@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cinttrd72nxcj"]
+
+[ext_resource type="PackedScene" uid="uid://dpib05j0j80en" path="res://BrainComponent.tscn" id="1_03al7"]
+[ext_resource type="Script" uid="uid://c221fjqf3anqn" path="res://ZombieBrain.cs" id="2_f4nym"]
+
+[node name="ZombieBrain" instance=ExtResource("1_03al7")]
+script = ExtResource("2_f4nym")
+enableDebug = true

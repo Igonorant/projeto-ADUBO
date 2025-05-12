@@ -19,6 +19,7 @@ healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
 [node name="ZombieBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_dtdss")]
+enableDebug = true
 hurtbox = NodePath("../Hurtbox")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]

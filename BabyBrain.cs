@@ -122,7 +122,7 @@ public partial class BabyBrain : BrainComponent
 
     private void ComputeNextState()
     {
-        
+
         if (IsTakingDamage() || isStunned)
         {
             currentState = State.STUNNED;
@@ -194,8 +194,6 @@ public partial class BabyBrain : BrainComponent
 
     private void HandleStunnedState()
     {
-        // TODO
-        currentDirection = Vector2.Zero;
     }
 
 

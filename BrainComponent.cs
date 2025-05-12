@@ -54,7 +54,7 @@ public partial class BrainComponent : Node
     private void ApplyKnockback(Vector2 offenderPosition)
     {
         Vector2 attackDirection = parentCharacter.GlobalPosition - offenderPosition;
-        parentCharacter.GlobalPosition -= attackDirection.Normalized() * 100.0f;
+        parentCharacter.knockbackDirection = attackDirection.Normalized();
     }
 
 }

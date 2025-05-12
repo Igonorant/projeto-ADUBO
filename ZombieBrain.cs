@@ -114,8 +114,7 @@ public partial class ZombieBrain : BrainComponent
 
     private void HandleStunnedState()
     {
-        // TODO
-        last_direction = Vector2.Zero;
+        last_direction = parentCharacter.knockbackDirection;
     }
 
     public override Vector2 GetMovingDirection()

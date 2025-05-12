@@ -91,7 +91,7 @@ public partial class AttackComponent : Node2D
 
         package.knockback = knockback;
 
-        package.offenderPosition = body.GlobalPosition;
+        package.offenderPosition = GetParent<Character>().GlobalPosition;
 
         hurtbox.IsHitByLifeAlteringEffect(package);
 

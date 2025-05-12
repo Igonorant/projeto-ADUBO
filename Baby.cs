@@ -86,8 +86,12 @@ public partial class Baby : Character
             case State.FOLLOWING: HandleFollowingState(); break;
             case State.STUNNED: HandleStunnedState(); break;
         }
+        SelectAnimation();
+        MoveAndSlide();
+    }
 
-
+    private void SelectAnimation()
+    {
         Vector2 velocityAbs = Velocity.Abs();
         if (Velocity.IsZeroApprox())
         {
@@ -119,8 +123,6 @@ public partial class Baby : Character
                 }
             }
         }
-
-        MoveAndSlide();
     }
 
     private void ComputeNextState()

@@ -41,4 +41,11 @@ public partial class Zombie : Character
         MoveAndSlide();
     }
 
+
+        protected override void Die()
+    {
+        GD.Print("Zombidead");
+        
+        this.QueueFree();
+    }
 }

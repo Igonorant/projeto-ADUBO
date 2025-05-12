@@ -26,5 +26,10 @@ public partial class Player : Character
 
         MoveAndSlide();
     }
+    
+    protected override void Die()
+    {
+        GD.Print("GAME OVER");
+    }
 
 }

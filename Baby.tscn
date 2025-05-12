@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr7cemjml5it6"]
+[gd_scene load_steps=7 format=3 uid="uid://cbfisu8xawer4"]
 
 [ext_resource type="Script" uid="uid://c1dmokx1x3mtt" path="res://Baby.cs" id="1_gvlnj"]
 [ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="2_7isjw"]
+[ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_b48xg"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="4_voakt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
 size = Vector2(128, 127)
 
-[node name="Baby" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_b48xg"]
+
+[node name="Baby" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
 scale = Vector2(0.1, 0.1)
 motion_mode = 1
 script = ExtResource("1_gvlnj")
-maxDistanceToMommy = 150.0
+healthComponent = NodePath("HealthComponent")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -28,3 +32,11 @@ one_shot = true
 
 [node name="FollowingTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_b48xg")]
+hurtbox = NodePath("../Hurtbox")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_voakt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_b48xg")

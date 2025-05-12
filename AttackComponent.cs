@@ -72,7 +72,7 @@ public partial class AttackComponent : Node2D
     private void OnTimerTimeOut()
     {
         GD.Print("ATAQUEI!");
-        shortRangeShape.Disabled = true;
+        shortRangeShape.SetDeferred("disabled", true);
         
         strikeTimer.Stop();
     }

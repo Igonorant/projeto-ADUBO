@@ -4,6 +4,7 @@ using System;
 public partial class PlayerBrain : BrainComponent
 {
 
+    [Signal] public delegate void InteractionOrderedEventHandler();
     private Vector2 last_direction = Vector2.Zero;
 
     public override void _Ready()
@@ -19,6 +20,11 @@ public partial class PlayerBrain : BrainComponent
             if (Input.IsActionJustPressed("attack"))
             {
                 parentCharacter.Attack();
+            }
+            
+            if(Input.IsActionJustPressed("interact"))
+            {
+                EmitSignal(nameof(InteractionOrdered));
             }
         }
 

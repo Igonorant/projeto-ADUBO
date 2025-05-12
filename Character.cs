@@ -3,6 +3,9 @@ using System;
 
 public partial class Character : CharacterBody2D
 {
+
+    protected bool canAct;
+    
     [Export] protected HealthComponent healthComponent;
     [Signal] public delegate void AttackOrderedEventHandler(int attackType);
 

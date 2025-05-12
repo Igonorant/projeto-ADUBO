@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyxpvijqkb82o"]
+
+[ext_resource type="Script" uid="uid://c1o0pvaaqwuhd" path="res://InteractionComponent.cs" id="1_iq0u2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v22em"]
+radius = 11.0
+
+[node name="InteractionComponent" type="Node2D" node_paths=PackedStringArray("interactionShape")]
+script = ExtResource("1_iq0u2")
+interactionShape = NodePath("Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(14, 0)
+shape = SubResource("CapsuleShape2D_v22em")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctk15jxnc27ys"]
+
+[ext_resource type="Texture2D" uid="uid://bpo043rl6xgch" path="res://icon.svg" id="1_cc3fp"]
+[ext_resource type="Script" uid="uid://o2thqygm6upy" path="res://CharacterSprite.cs" id="2_cc3fp"]
+
+[node name="CharacterSprite" type="Sprite2D" node_paths=PackedStringArray("hurtIndicationTimer")]
+self_modulate = Color(0.337255, 1, 0, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_cc3fp")
+script = ExtResource("2_cc3fp")
+hurtIndicationTimer = NodePath("HurtTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+show_behind_parent = true
+texture = ExtResource("1_cc3fp")
+
+[node name="HurtTimer" type="Timer" parent="."]

@@ -13,14 +13,13 @@ public partial class Zombie : Character
     [Export] public float chasingMommyDistance = 75.0f;
     [Export] public float attackRange = 50.0f;
 
-
-    private ZombieBrain brain;
+    [Export] private ZombieBrain brain;
 
     public override void _Ready()
     {
         base._Ready();
         // attackComponent = (AttackComponent)FindChild("AttackComponent");
-        brain = (ZombieBrain)FindChild("ZombieBrain");
+
         brain.SetTarget(baby);
         brain.SetAttackRange(attackRange);
     }

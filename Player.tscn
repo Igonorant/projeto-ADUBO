@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://8nqgxwsk6dbw"]
 
 [ext_resource type="Script" uid="uid://bmex70orcl7yi" path="res://Player.cs" id="1_kpjcp"]
-[ext_resource type="PackedScene" uid="uid://ctk15jxnc27ys" path="res://PlayerSprite.tscn" id="2_tdg3f"]
+[ext_resource type="PackedScene" uid="uid://c80bc1yuaiy0p" path="res://PlayerSprite.tscn" id="2_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
@@ -24,7 +24,6 @@ attackComponent = NodePath("../AttackComponent")
 healthComponent = NodePath("../HealthComponent")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j5wjh")
 
 [node name="PlayerBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_tdg3f")]

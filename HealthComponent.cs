@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 
 
@@ -50,10 +51,12 @@ public partial class HealthComponent : Node2D
     {
                 GD.Print("DAMAGE: " + dmg);
     
-        tempHealth -= dmg;
+        tempHealth += dmg;
+        GD.Print("temp health is" + tempHealth);
         
         if(tempHealth <= 0)
         {
+            GD.Print("tempHealth below zero");
             tempHealth = 0;
             Die();
         }
@@ -92,6 +95,7 @@ public partial class HealthComponent : Node2D
     
     private void Die()
     {
+        GD.Print("Health component diagnose: DEAD");
         EmitSignal(nameof(HealthDepleted));
     }
     

@@ -71,13 +71,13 @@ public partial class Baby : Character
             debugLabel = debugLabelScene.Instantiate<Label>();
             AddChild(debugLabel);
             debugLabel.Scale = new Vector2(1.0f / Scale.X, 1.0f / Scale.Y);
+            debugLabel.Position = new Vector2(0.0f, -35.0f);
         }
     }
 
     public override void _PhysicsProcess(double delta)
     {
         ComputeNextState();
-        if (debugLabel != null) { debugLabel.Text = GetStateString(currentState); }
 
         switch (currentState)
         {
@@ -130,10 +130,11 @@ public partial class Baby : Character
         if (IsTakingDamage())
         {
             currentState = State.STUNNED;
-            return;
         }
 
         // Other states are select by the timers' timeout signals
+
+        if (debugLabel != null) { debugLabel.Text = GetStateString(currentState); }
     }
 
     private void OnIdleTimerTimeout()

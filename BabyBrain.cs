@@ -194,6 +194,7 @@ public partial class BabyBrain : BrainComponent
 
     private void HandleStunnedState()
     {
+        currentDirection = parentCharacter.knockbackDirection;
     }
 
 

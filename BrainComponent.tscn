@@ -7,3 +7,4 @@ script = ExtResource("1_fe16k")
 stunTimer = NodePath("StunTimer")
 
 [node name="StunTimer" type="Timer" parent="."]
+one_shot = true

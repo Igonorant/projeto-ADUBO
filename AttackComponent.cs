@@ -18,7 +18,9 @@ public partial class AttackComponent : Node2D
 
     [Export] private float stunTime;
 
-    [Export(PropertyHint.Range, "0,1000,1")] private float knockback;
+    [Export(PropertyHint.Range, "0,2000,1")] private float knockback;
+    
+    [Export] private float knockbackDuration;
 
     [Export] private AttackType attackType;
 
@@ -90,6 +92,8 @@ public partial class AttackComponent : Node2D
         package.stunTime = stunTime;
 
         package.knockback = knockback;
+        
+        package.knockDuration = knockbackDuration;
 
         package.offenderPosition = GetParent<Character>().GlobalPosition;
 

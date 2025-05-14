@@ -22,3 +22,4 @@ position = Vector2(14, 0)
 shape = SubResource("CapsuleShape2D_v22em")
 
 [node name="InteractionTimer" type="Timer" parent="."]
+one_shot = true

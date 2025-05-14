@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_e80uo"]
 [ext_resource type="PackedScene" uid="uid://crfrsal7bucfs" path="res://PlayerBrain.tscn" id="3_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://wa1fa6ev8mxx" path="res://AttackComponent.tscn" id="4_cxr5p"]
-[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="5_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="5_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://dyxpvijqkb82o" path="res://InteractionComponent.tscn" id="7_dtqjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wjh"]
@@ -14,13 +14,17 @@ size = Vector2(30, 30)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdg3f"]
 radius = 20.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "brain", "interactionComponent", "healthComponent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "playerBrain", "interactionComponent", "brain", "healthComponent", "knockbackTimer", "hurtbox")]
 motion_mode = 1
 script = ExtResource("1_kpjcp")
 attackComponent = NodePath("AttackComponent")
-brain = NodePath("PlayerBrain")
+playerBrain = NodePath("PlayerBrain")
 interactionComponent = NodePath("InteractionComponent")
+speed = 200.0
+brain = NodePath("PlayerBrain")
 healthComponent = NodePath("HealthComponent")
+knockbackTimer = NodePath("KnockbackTimer")
+hurtbox = NodePath("Hurtbox")
 metadata/_edit_group_ = true
 
 [node name="PlayerBrain" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("3_tdg3f")]
@@ -54,7 +58,11 @@ cooldown = 1.0
 attackPower = 10
 stunTime = 0.3
 knockback = 1000.0
+knockbackDuration = 0.1
 attackDuration = 0.3
 
 [node name="InteractionComponent" parent="." node_paths=PackedStringArray("playerBrain") instance=ExtResource("7_dtqjt")]
 playerBrain = NodePath("../PlayerBrain")
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+one_shot = true

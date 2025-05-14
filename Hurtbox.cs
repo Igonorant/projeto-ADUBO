@@ -19,5 +19,7 @@ public partial class EffectPackage : Resource
     public int damage;
     public float stunTime;
     public float knockback;
+    public float knockDuration;
     public Vector2 offenderPosition;
+
 }

@@ -33,9 +33,8 @@ public partial class BrainComponent : Node
         if (effect.stunTime > 0)
         {
             Stun(effect.stunTime);
+        
         }
-
-        ApplyKnockback(effect.offenderPosition, effect.knockback);
     }
 
     protected void Stun(float duration)
@@ -51,21 +50,10 @@ public partial class BrainComponent : Node
         stunTimer.Stop();
     }
 
-    private void ApplyKnockback(Vector2 offenderPosition, float knockbackIntensity)
+    
+    public virtual void SelectAnimation()
     {
-        Vector2 attackDirection = parentCharacter.GlobalPosition - offenderPosition;
-
-        // Following line make the character move accordingly to its speed following knockback direction.
-        // Since the intensity will depend on who is being hit, is not very relliable.
-        // parentCharacter.knockbackDirection = attackDirection.Normalized() * knockbackIntensity;
-
-        // An alternative is to make the intensity fully control the knockback movement, but this way it causes
-        // a little "snapping" in the character.
-        parentCharacter.Velocity = attackDirection.Normalized() * knockbackIntensity;
-        parentCharacter.MoveAndSlide();
-
-        // The ultimate alternative would need a bigger refactor to create the correct movement.
-        // If we have time we may consider it.
+        
     }
 
 }

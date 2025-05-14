@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1hsh6mofvytn" path="res://assets/baby-Sheet.png" id="2_b48xg"]
 [ext_resource type="PackedScene" uid="uid://dklwete8c0vt" path="res://BabyBrain.tscn" id="2_voakt"]
 [ext_resource type="PackedScene" uid="uid://bdtjcmd85elfc" path="res://HealthComponent.tscn" id="3_b48xg"]
-[ext_resource type="PackedScene" path="res://Hurtbox.tscn" id="4_voakt"]
+[ext_resource type="PackedScene" uid="uid://daokxm0tlf21h" path="res://Hurtbox.tscn" id="4_voakt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_voakt"]
 radius = 8.01561
@@ -199,11 +199,15 @@ _data = {
 &"moving_up": SubResource("Animation_q178i")
 }
 
-[node name="Baby" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
+[node name="Baby" type="CharacterBody2D" node_paths=PackedStringArray("brain", "healthComponent", "knockbackTimer", "hurtbox")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_gvlnj")
+speed = 50.0
+brain = NodePath("BabyBrain")
 healthComponent = NodePath("HealthComponent")
+knockbackTimer = NodePath("KnockbackTimer")
+hurtbox = NodePath("Hurtbox")
 
 [node name="BabyBrain" parent="." node_paths=PackedStringArray("animation", "hurtbox") instance=ExtResource("2_voakt")]
 enableDebug = true
@@ -234,3 +238,6 @@ debug_color = Color(0.98546, 0, 0.333541, 0.42)
 libraries = {
 &"": SubResource("AnimationLibrary_5pat3")
 }
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+one_shot = true

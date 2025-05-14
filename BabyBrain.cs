@@ -85,7 +85,7 @@ public partial class BabyBrain : BrainComponent
         }
     }
 
-    public void SelectAnimation()
+    public override void SelectAnimation()
     {
         Vector2 velocityAbs = parentCharacter.Velocity.Abs();
         if (parentCharacter.Velocity.IsZeroApprox())

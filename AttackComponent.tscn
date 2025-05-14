@@ -26,5 +26,7 @@ disabled = true
 debug_color = Color(0.529879, 0.571186, 0, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true

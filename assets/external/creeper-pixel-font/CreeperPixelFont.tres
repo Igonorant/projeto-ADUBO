@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://custgwo8f2n6p"]
+
+[ext_resource type="FontFile" uid="uid://2fg1yl47fev1" path="res://assets/external/creeper-pixel-font/CreeperPixelRegular-DMYx.ttf" id="1_32v5m"]
+
+[resource]
+base_font = ExtResource("1_32v5m")

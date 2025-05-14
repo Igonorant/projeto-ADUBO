@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dliuy6entti8m"]
+[gd_scene load_steps=16 format=3 uid="uid://dliuy6entti8m"]
 
+[ext_resource type="Script" uid="uid://cg6w8varqm0g0" path="res://Game.cs" id="1_r0x5m"]
 [ext_resource type="Texture2D" uid="uid://3hh0vk8hn5yt" path="res://assets/ph_home_map.png" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://8nqgxwsk6dbw" path="res://Player.tscn" id="2_t88pq"]
 [ext_resource type="PackedScene" uid="uid://bdh3jnpvq162o" path="res://Zombie.tscn" id="3_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://cbfisu8xawer4" path="res://Baby.tscn" id="4_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://cm7anc8cpntw5" path="res://Dialog.tscn" id="5_t88pq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1, 0)
@@ -32,6 +34,7 @@ size = Vector2(209, 20)
 size = Vector2(204.5, 20)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_r0x5m")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -110,3 +113,8 @@ followingTime = 1.2
 position = Vector2(477, 758)
 mommy = NodePath("../Player")
 baby = NodePath("../Baby")
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="InterfaceLayer" instance=ExtResource("5_t88pq")]
+unique_name_in_owner = true

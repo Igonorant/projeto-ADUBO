@@ -25,6 +25,11 @@ window/size/mode=3
 
 project/assembly_name="Projeto ADUBO"
 
+[gui]
+
+theme/custom="uid://gowl2cls3oy8"
+theme/custom_font="uid://2fg1yl47fev1"
+
 [input]
 
 up={
